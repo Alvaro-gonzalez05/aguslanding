@@ -25,12 +25,11 @@ export default function MobileDrawer({ isOpen, onClose, onConsultaOpen }: Mobile
           </button>
         </div>
         <div className="mobile-drawer__links">
-          <a className="mobile-drawer__link" href="#inicio" onClick={onClose}><span className="material-symbols-outlined">account_balance</span>Inicio</a>
+          <a className="mobile-drawer__link" href="/" onClick={onClose}><span className="material-symbols-outlined">account_balance</span>Inicio</a>
           <a className="mobile-drawer__link" href="/areas" onClick={onClose}><span className="material-symbols-outlined">gavel</span>Áreas de práctica</a>
-          <button className="mobile-drawer__link w-full text-left" onClick={() => { onClose(); onConsultaOpen?.(); }} type="button"><span className="material-symbols-outlined">chat</span>Consulta</button>
-          <a className="mobile-drawer__link" href="#trayectoria" onClick={onClose}><span className="material-symbols-outlined">menu_book</span>Trayectoria</a>
+          <a className="mobile-drawer__link" href="/#trayectoria" onClick={onClose}><span className="material-symbols-outlined">menu_book</span>Trayectoria</a>
           <a className="mobile-drawer__link" href="/sobre_mi" onClick={onClose}><span className="material-symbols-outlined">person</span>Sobre mí</a>
-          <a className="mobile-drawer__link" href="#contacto" onClick={onClose}><span className="material-symbols-outlined">mail</span>Contacto</a>
+          <a className="mobile-drawer__link" href="/#contacto" onClick={onClose}><span className="material-symbols-outlined">mail</span>Contacto</a>
         </div>
         <div className="mobile-drawer__cta">
           <button className="gold-gradient inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-center font-label text-xs font-bold uppercase tracking-[0.14em] text-on-primary" onClick={() => { onClose(); onConsultaOpen?.(); }} type="button">Agendar consulta</button>

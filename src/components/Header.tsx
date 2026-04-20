@@ -98,11 +98,11 @@ export default function Header({ onMenuOpen, onConsultaOpen }: { onMenuOpen: () 
         </div>
         <div className="header-desktop-row">
           <nav className="header-nav hidden md:flex items-center gap-5 text-[10px] font-label font-semibold uppercase tracking-[0.14em] text-on-surface/80">
-            <a className="top-nav-link" href="#inicio">Inicio</a>
+            <a className="top-nav-link" href="/">Inicio</a>
             <a className="top-nav-link" href="/areas">Áreas</a>
-            <a className="top-nav-link" href="#trayectoria">Trayectoria</a>
+            <a className="top-nav-link" href="/#trayectoria">Trayectoria</a>
             <a className="top-nav-link" href="/sobre_mi">Sobre mí</a>
-            <a className="top-nav-link" href="#contacto">Contacto</a>
+            <a className="top-nav-link" href="/#contacto">Contacto</a>
           </nav>
         </div>
         <button
