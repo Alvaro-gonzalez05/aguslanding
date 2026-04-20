@@ -29,7 +29,7 @@ export default function MobileDrawer({ isOpen, onClose, onConsultaOpen }: Mobile
           <a className="mobile-drawer__link" href="/areas" onClick={onClose}><span className="material-symbols-outlined">gavel</span>Áreas de práctica</a>
           <button className="mobile-drawer__link w-full text-left" onClick={() => { onClose(); onConsultaOpen?.(); }} type="button"><span className="material-symbols-outlined">chat</span>Consulta</button>
           <a className="mobile-drawer__link" href="#trayectoria" onClick={onClose}><span className="material-symbols-outlined">menu_book</span>Trayectoria</a>
-          <a className="mobile-drawer__link" href="#perfil" onClick={onClose}><span className="material-symbols-outlined">person</span>Perfil</a>
+          <a className="mobile-drawer__link" href="/sobre_mi" onClick={onClose}><span className="material-symbols-outlined">person</span>Sobre mí</a>
           <a className="mobile-drawer__link" href="#contacto" onClick={onClose}><span className="material-symbols-outlined">mail</span>Contacto</a>
         </div>
         <div className="mobile-drawer__cta">

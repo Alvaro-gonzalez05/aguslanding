@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 const areas = [
-  { icon: "balance", title: "Derecho laboral y despidos", desc: "Asesoramiento y defensa en conflictos laborales, despidos sin causa, indemnizaciones, diferencias salariales, registración y resguardo integral de tus derechos como trabajador." },
-  { icon: "healing", title: "ART, accidentes laborales y enfermedades profesionales", desc: "Reclamos ante ART por accidentes de trabajo, incapacidad, enfermedades profesionales, prestaciones médicas e indemnizaciones derivadas del daño sufrido." },
-  { icon: "directions_car", title: "Daños y perjuicios por accidentes de tránsito", desc: "Reclamos por lesiones, incapacidad, gastos y demás consecuencias derivadas de accidentes viales, con seguimiento integral hasta la reparación correspondiente." },
-  { icon: "health_and_safety", title: "Derecho de salud y amparos", desc: "Acciones urgentes para exigir cobertura médica, prestaciones, medicamentos y tratamientos cuando se vulnera tu derecho a la salud." },
+  { icon: "balance", title: "Derecho laboral - despidos", desc: "Asesoramiento y defensa en conflictos laborales, despidos sin causa, indemnizaciones, diferencias salariales, registración y resguardo integral de tus derechos como trabajador." },
+  { icon: "healing", title: "ART - accidentes laborales - enfermedades profesionales", desc: "Reclamos ante ART por accidentes de trabajo, incapacidad, enfermedades profesionales, prestaciones médicas e indemnizaciones derivadas del daño sufrido." },
+  { icon: "directions_car", title: "Daños y perjuicios - accidentes de tránsito", desc: "Reclamos por lesiones, incapacidad, gastos y demás consecuencias derivadas de accidentes viales, con seguimiento integral hasta la reparación correspondiente." },
+  { icon: "health_and_safety", title: "Derecho de salud - amparos", desc: "Acciones urgentes para exigir cobertura médica, prestaciones, medicamentos y tratamientos cuando se vulnera tu derecho a la salud." },
   { icon: "family_restroom", title: "Derecho sucesorio", desc: "Acompañamiento en sucesiones, declaratorias de herederos, administración de bienes y resolución ordenada del proceso sucesorio." },
   { icon: "diversity_1", title: "Derecho de familia", desc: "Asistencia legal en conflictos familiares, divorcios, alimentos, régimen de comunicación, cuidado personal y protección de derechos del grupo familiar." },
 ];

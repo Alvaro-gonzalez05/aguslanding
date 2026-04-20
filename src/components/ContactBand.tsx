@@ -6,11 +6,10 @@ export default function ContactBand() {
           <p className="section-kicker font-label text-xs font-black uppercase tracking-[0.28em]">Consulta personalizada</p>
           <h2 className="mt-3 font-headline text-2xl md:text-3xl leading-tight text-on-surface lg:text-4xl">Un primer contacto claro puede ordenar todo el caso</h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-on-surface-variant md:text-base">
-            Si necesitas orientación sobre salud, trabajo, sucesiones o un reclamo por daños, puedes escribir por WhatsApp o enviar un correo para coordinar una consulta.
+            Si necesitas orientación sobre salud, trabajo, sucesiones o un reclamo por daños, podés escribir por WhatsApp para coordinar una consulta.
           </p>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <a className="gold-gradient inline-flex items-center justify-center rounded-full px-6 py-3 text-center font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary" href="#consulta">Escribir por WhatsApp</a>
-            <a className="inline-flex items-center justify-center rounded-full border border-primary/35 bg-white/75 px-6 py-3 text-center font-label text-xs font-semibold uppercase tracking-[0.18em] text-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=agustinagonzalezvicario@gmail.com" target="_blank" rel="noreferrer">Enviar correo</a>
           </div>
         </div>
       </div>

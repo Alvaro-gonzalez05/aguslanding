@@ -43,7 +43,6 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     const area = (formData.get("area") || "").toString().trim();
     const name = (formData.get("name") || "").toString().trim();
     const phone = (formData.get("phone") || "").toString().trim();
-    const email = (formData.get("email") || "").toString().trim();
     const message = (formData.get("message") || "").toString().trim();
 
     if (!area || !name || !message) {
@@ -58,7 +57,6 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
       `Nombre: ${name}`,
     ];
     if (phone) lines.push(`Telefono: ${phone}`);
-    if (email) lines.push(`Correo: ${email}`);
     lines.push("", "Consulta:", message);
 
     const whatsappUrl = `https://wa.me/542616399640?text=${encodeURIComponent(lines.join("\n"))}`;
@@ -101,10 +99,6 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
               <label className="font-label text-xs font-bold uppercase tracking-[0.18em] text-primary" htmlFor="modal-phone">Teléfono</label>
               <input className="consultation-input" id="modal-phone" name="phone" placeholder="Ej.: 261 000 0000" type="tel" />
             </div>
-          </div>
-          <div className="consultation-field">
-            <label className="font-label text-xs font-bold uppercase tracking-[0.18em] text-primary" htmlFor="modal-email">Correo electrónico</label>
-            <input className="consultation-input" id="modal-email" name="email" placeholder="Ej.: nombre@email.com" type="email" />
           </div>
           <div className="consultation-field">
             <label className="font-label text-xs font-bold uppercase tracking-[0.18em] text-primary" htmlFor="modal-message">Tu consulta</label>

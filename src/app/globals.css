@@ -964,6 +964,8 @@ body {
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
 }
 .area-block__image-placeholder {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -987,4 +989,185 @@ body {
   .area-block__grid--reversed .area-block__image-wrap {
     order: 1;
   }
+}
+
+/* ── Sobre Mí Page ── */
+.sobre-hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: clamp(6rem, 14vw, 9rem) 0 clamp(4rem, 8vw, 6rem);
+  overflow: hidden;
+}
+.sobre-hero__grid {
+  display: grid;
+  gap: 3rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .sobre-hero__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+.sobre-hero__title {
+  font-size: clamp(4rem, 13vw, 9rem);
+  line-height: 0.88;
+  letter-spacing: -0.04em;
+  color: rgba(249, 251, 253, 0.97);
+}
+.sobre-hero__photo-wrap {
+  display: flex;
+  justify-content: center;
+}
+.sobre-photo-card {
+  position: relative;
+  width: 100%;
+  max-width: 22rem;
+}
+.sobre-photo-inner {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 1.25rem;
+  border: 3px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255,255,255,0.04);
+  transform: rotate(-1.5deg);
+}
+.sobre-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 25, 32, 0.55) 0%, transparent 55%);
+}
+.sobre-badge {
+  position: absolute;
+  bottom: -1rem;
+  right: -1rem;
+  background: rgba(249, 251, 253, 0.97);
+  border-radius: 0.9rem;
+  padding: 0.7rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.sobre-star {
+  position: absolute;
+  font-size: clamp(3.5rem, 12vw, 10rem);
+  color: rgba(255, 255, 255, 0.07);
+  pointer-events: none;
+  line-height: 1;
+  opacity: 0;
+}
+.sobre-star--1 { top: 10%; left: 2%; }
+.sobre-star--2 { top: 6%; right: 2%; }
+.sobre-star--3 { bottom: 10%; left: 48%; font-size: clamp(2rem, 6vw, 5rem); }
+.sobre-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-strong);
+  color: #fff;
+  border: none;
+  border-radius: 9999px;
+  padding: 0.875rem 2rem;
+  font-family: var(--font-label);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+.sobre-cta-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* Bio grid */
+.sobre-bio-grid {
+  display: grid;
+  gap: 2.5rem;
+}
+@media (min-width: 768px) {
+  .sobre-bio-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+}
+.sobre-pullquote {
+  font-size: clamp(1.3rem, 3.5vw, 2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: rgba(249, 251, 253, 0.9);
+  text-transform: uppercase;
+  border-left: 3px solid var(--accent-strong);
+  padding-left: 1.25rem;
+}
+
+/* Values grid */
+.sobre-values-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+}
+@media (min-width: 768px) {
+  .sobre-values-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+}
+.sobre-value-card {
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 1rem;
+  padding: 1.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.03);
+  transition: border-color 220ms ease, background 220ms ease;
+}
+.sobre-value-card:hover {
+  border-color: rgba(95, 174, 204, 0.3);
+  background: rgba(95, 174, 204, 0.05);
+}
+.sobre-value-icon {
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 0.6rem;
+  background: rgba(95, 174, 204, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Specialties list */
+.sobre-spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.sobre-spec-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  transition: padding-left 200ms ease;
+}
+.sobre-spec-item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+.sobre-spec-item:hover {
+  padding-left: 0.5rem;
+}
+.sobre-spec-number {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: rgba(255, 255, 255, 0.08);
+  min-width: 3rem;
+  line-height: 1;
 }

@@ -29,10 +29,15 @@ export function useAreasAnimations() {
     /* ── Area blocks — alternating left/right ── */
     gsap.utils.toArray<HTMLElement>("[data-animate='area-block']").forEach((block) => {
       const direction = block.dataset.direction;
-      const xStart = direction === "left" ? -100 : 100;
+      const copy = block.querySelector<HTMLElement>(".area-block__copy");
+      const image = block.querySelector<HTMLElement>(".area-block__image-wrap");
+      if (!copy || !image) return;
 
-      gsap.fromTo(block,
-        { opacity: 0, x: xStart },
+      const copyFromX = direction === "left" ? -110 : 110;
+      const imageFromX = -copyFromX;
+
+      gsap.fromTo(copy,
+        { opacity: 0, x: copyFromX },
         {
           opacity: 1,
           x: 0,
@@ -40,8 +45,23 @@ export function useAreasAnimations() {
           scrollTrigger: {
             trigger: block,
             start: "top 90%",
-            end: "top 45%",
-            scrub: 0.8,
+            end: "top 42%",
+            scrub: 0.85,
+          },
+        }
+      );
+
+      gsap.fromTo(image,
+        { opacity: 0, x: imageFromX },
+        {
+          opacity: 1,
+          x: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: block,
+            start: "top 90%",
+            end: "top 42%",
+            scrub: 0.85,
           },
         }
       );

@@ -43,7 +43,7 @@ export default function ProfileSection() {
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
               <a className="gold-gradient inline-flex items-center justify-center rounded-full px-6 py-3 text-center font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary" href="#consulta">Solicitar consulta</a>
-              <a className="inline-flex items-center justify-center rounded-full border border-primary/35 px-6 py-3 text-center font-label text-xs font-semibold uppercase tracking-[0.18em] text-primary" href="#areas">Ver especialidades</a>
+              <a className="inline-flex items-center justify-center rounded-full border border-primary/35 px-6 py-3 text-center font-label text-xs font-semibold uppercase tracking-[0.18em] text-primary" href="/sobre_mi">Sobre mí</a>
             </div>
           </div>
         </div>

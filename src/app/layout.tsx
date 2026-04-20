@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Serif, Manrope, Cormorant_Garamond } from "next/font/google";
+import SmoothScroll from "@/components/SmoothScroll";
 import "./globals.css";
 
 const notoSerif = Noto_Serif({
@@ -224,7 +225,10 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-surface font-body text-on-surface">{children}</body>
+      <body className="bg-surface font-body text-on-surface">
+        <SmoothScroll />
+        {children}
+      </body>
     </html>
   );
 }

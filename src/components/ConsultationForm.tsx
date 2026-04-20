@@ -21,7 +21,6 @@ export default function ConsultationForm() {
     const area = (formData.get("area") || "").toString().trim();
     const name = (formData.get("name") || "").toString().trim();
     const phone = (formData.get("phone") || "").toString().trim();
-    const email = (formData.get("email") || "").toString().trim();
     const message = (formData.get("message") || "").toString().trim();
 
     if (!area || !name || !message) {
@@ -36,7 +35,6 @@ export default function ConsultationForm() {
       `Nombre: ${name}`,
     ];
     if (phone) lines.push(`Telefono: ${phone}`);
-    if (email) lines.push(`Correo: ${email}`);
     lines.push("", "Consulta:", message);
 
     const whatsappUrl = `https://wa.me/542616399640?text=${encodeURIComponent(lines.join("\n"))}`;
@@ -61,7 +59,7 @@ export default function ConsultationForm() {
                 <span className="consultation-pill"><span className="material-symbols-outlined text-[17px]">inventory_2</span>Consulta ordenada</span>
                 <span className="consultation-pill"><span className="material-symbols-outlined text-[17px]">schedule</span>Respuesta ágil</span>
               </div>
-              <p className="consultation-note">Campos mínimos: área, nombre y breve descripción. Si querés, podés sumar teléfono y correo para facilitar el seguimiento.</p>
+              <p className="consultation-note">Campos mínimos: área, nombre y breve descripción. Si querés, podés sumar tu teléfono para facilitar el seguimiento.</p>
             </div>
             <form className="consultation-form" onSubmit={handleSubmit}>
               <div className="consultation-field">
@@ -84,10 +82,6 @@ export default function ConsultationForm() {
                 </div>
               </div>
               <div className="consultation-field">
-                <label className="font-label text-xs font-bold uppercase tracking-[0.18em] text-primary" htmlFor="consultation-email">Correo electrónico</label>
-                <input className="consultation-input" id="consultation-email" name="email" placeholder="Ej.: nombre@email.com" type="email" />
-              </div>
-              <div className="consultation-field">
                 <label className="font-label text-xs font-bold uppercase tracking-[0.18em] text-primary" htmlFor="consultation-message">Contame brevemente tu consulta</label>
                 <textarea className="consultation-textarea" id="consultation-message" name="message" placeholder="Describí lo ocurrido, desde cuándo sucede y qué necesitás resolver." required></textarea>
               </div>
@@ -95,9 +89,6 @@ export default function ConsultationForm() {
                 <button className="gold-gradient inline-flex items-center justify-center rounded-full px-6 py-3 text-center font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary" type="submit">
                   Enviar por WhatsApp
                 </button>
-                <a className="inline-flex items-center justify-center rounded-full border border-primary/35 bg-white/75 px-6 py-3 text-center font-label text-xs font-semibold uppercase tracking-[0.18em] text-primary" href="https://mail.google.com/mail/?view=cm&fs=1&to=agustinagonzalezvicario@gmail.com" target="_blank" rel="noreferrer">
-                  Enviar correo
-                </a>
               </div>
             </form>
           </div>

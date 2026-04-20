@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileDrawer from "@/components/MobileDrawer";
@@ -10,9 +11,9 @@ import { useAreasAnimations } from "@/hooks/useAreasAnimations";
 const areas = [
   {
     icon: "balance",
-    title: "Derecho laboral y despidos",
+    title: "Derecho laboral - despidos",
     subtitle: "LABORAL",
-    image: "/imagenes/area-laboral.jpg",
+    image: "/imagenes/laboral.jpeg",
     paragraphs: [
       "Defensa integral en conflictos laborales: despidos sin causa o con causa injustificada, diferencias salariales, horas extras impagas, falta de registración y todo tipo de irregularidades en la relación de trabajo.",
       "Se analizan las condiciones de cada caso para determinar la mejor estrategia: negociación, mediación o demanda judicial. El objetivo es proteger tus derechos como trabajador y obtener la indemnización o reparación que corresponda según la ley.",
@@ -21,9 +22,9 @@ const areas = [
   },
   {
     icon: "healing",
-    title: "ART, accidentes laborales y enfermedades profesionales",
+    title: "ART - accidentes laborales - enfermedades profesionales",
     subtitle: "ART",
-    image: "/imagenes/area-art.jpg",
+    image: "/imagenes/hero-2.jpg",
     paragraphs: [
       "Reclamos frente a Aseguradoras de Riesgos del Trabajo por accidentes ocurridos en el ámbito laboral o in itinere, enfermedades profesionales y toda incapacidad derivada de las condiciones de trabajo.",
       "Se gestionan las prestaciones médicas, dinerarias y por incapacidad que la ART debe otorgar, y en caso de incumplimiento, se inicia la vía judicial para exigir la reparación integral del daño sufrido.",
@@ -32,9 +33,9 @@ const areas = [
   },
   {
     icon: "directions_car",
-    title: "Daños y perjuicios por accidentes de tránsito",
+    title: "Daños y perjuicios - accidentes de tránsito",
     subtitle: "TRÁNSITO",
-    image: "/imagenes/area-transito.jpg",
+    image: "/imagenes/dañosyprejuicios.jpeg",
     paragraphs: [
       "Reclamos por lesiones físicas, daño moral, incapacidad sobreviniente, gastos médicos y toda consecuencia derivada de accidentes de tránsito, tanto como conductor, pasajero o peatón.",
       "Se trabaja con compañías de seguros para obtener una indemnización justa y, en caso de negativa o demora, se promueve la acción judicial correspondiente con el respaldo probatorio necesario.",
@@ -43,9 +44,9 @@ const areas = [
   },
   {
     icon: "health_and_safety",
-    title: "Derecho de salud y amparos",
+    title: "Derecho de salud - amparos",
     subtitle: "SALUD",
-    image: "/imagenes/area-salud.jpg",
+    image: "/imagenes/salud.jpeg",
     paragraphs: [
       "Acciones de amparo contra obras sociales y prepagas que niegan o demoran coberturas médicas, tratamientos, cirugías, medicamentos, prótesis y prestaciones esenciales.",
       "El amparo es una herramienta judicial urgente que permite obtener una orden del juez en días, obligando a la entidad de salud a cumplir con su obligación de cobertura.",
@@ -56,7 +57,7 @@ const areas = [
     icon: "family_restroom",
     title: "Derecho sucesorio",
     subtitle: "SUCESIONES",
-    image: "/imagenes/area-sucesiones.jpg",
+    image: "/imagenes/sucesorio.jpeg",
     paragraphs: [
       "Tramitación completa de sucesiones: inicio del proceso, declaratoria de herederos, inventario de bienes, inscripción registral y partición de la herencia.",
       "Asesoramiento en conflictos entre herederos, impugnación de testamentos, legítimas afectadas, cesión de derechos hereditarios y administración judicial de bienes.",
@@ -67,7 +68,7 @@ const areas = [
     icon: "diversity_1",
     title: "Derecho de familia",
     subtitle: "FAMILIA",
-    image: "/imagenes/area-familia.jpg",
+    image: "/imagenes/familia.jpeg",
     paragraphs: [
       "Asistencia legal en divorcios, convenios reguladores, régimen de comunicación con hijos, cuidado personal, alimentos y todo lo vinculado a conflictos dentro del grupo familiar.",
       "Se prioriza la resolución consensuada cuando es posible, y se actúa con firmeza en sede judicial cuando las circunstancias lo requieren, siempre protegiendo los derechos de las partes.",
@@ -141,10 +142,13 @@ export default function AreasPage() {
                       <div className={`area-block__card ${isEven ? "area-block__card--tilt-right" : "area-block__card--tilt-left"}`}>
                         <div className="area-block__card-inner">
                           <div className="area-block__image-placeholder">
-                            <span className="material-symbols-outlined text-5xl text-surface-variant/20">{area.icon}</span>
-                            <span className="text-[0.65rem] text-surface-variant/20 mt-3 uppercase tracking-[0.2em]">
-                              Imagen de {area.subtitle}
-                            </span>
+                            <Image
+                              src={area.image}
+                              alt={area.title}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                              className="object-cover object-center"
+                            />
                           </div>
                         </div>
                       </div>

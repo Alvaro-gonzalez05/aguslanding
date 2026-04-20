@@ -190,7 +190,7 @@ export default function HeroSlider() {
         />
       </div>
       <div className="hero-ambient absolute inset-0"></div>
-      <div className="relative z-10 mx-auto flex min-h-[420px] w-full max-w-screen-2xl items-center px-4 py-14 md:min-h-[640px] md:px-6 md:py-20">
+      <div className="relative z-10 mx-auto flex min-h-[420px] w-full max-w-screen-2xl items-center px-4 pt-[5.5rem] pb-14 md:min-h-[640px] md:px-6 md:py-20">
         <div className="hero-grid w-full">
           <div className="hero-copy space-y-6 reveal-up" data-animate="hero-copy">
             <div ref={eyebrowRef} className="hero-eyebrow">

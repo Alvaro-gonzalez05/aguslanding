@@ -101,7 +101,7 @@ export default function Header({ onMenuOpen, onConsultaOpen }: { onMenuOpen: () 
             <a className="top-nav-link" href="#inicio">Inicio</a>
             <a className="top-nav-link" href="/areas">Áreas</a>
             <a className="top-nav-link" href="#trayectoria">Trayectoria</a>
-            <a className="top-nav-link" href="#perfil">Perfil</a>
+            <a className="top-nav-link" href="/sobre_mi">Sobre mí</a>
             <a className="top-nav-link" href="#contacto">Contacto</a>
           </nav>
         </div>
