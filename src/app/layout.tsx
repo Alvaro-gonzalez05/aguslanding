@@ -23,7 +23,7 @@ const cormorantGaramond = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-const siteUrl = "https://www.agustinagonzalezvicario.com";
+const siteUrl = "https://www.estudioagv.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -90,6 +90,17 @@ export const metadata: Metadata = {
     "consulta abogado gratis Mendoza",
     "necesito un abogado en Mendoza",
     "busco abogado en Mendoza",
+    // P3 — Familia (nueva área cubierta)
+    "abogado derecho de familia Mendoza",
+    "abogada derecho de familia Mendoza",
+    "abogado divorcio Mendoza",
+    "abogada divorcio Mendoza",
+    "divorcio express Mendoza",
+    "cuota alimentaria Mendoza",
+    "alimentos menores Mendoza",
+    "fijación cuota alimentaria abogado",
+    "divorcio vincular Mendoza",
+    "tenencia hijos Mendoza",
   ],
   authors: [{ name: "Agustina Gonzalez Vicario" }],
   creator: "Agustina Gonzalez Vicario",
@@ -171,6 +182,9 @@ const jsonLd = {
         "Accidentes de trabajo",
         "Derecho sucesorio",
         "Daños y perjuicios por accidentes de tránsito",
+        "Derecho de familia",
+        "Divorcio",
+        "Cuota alimentaria",
       ],
       priceRange: "$$",
       openingHoursSpecification: {
