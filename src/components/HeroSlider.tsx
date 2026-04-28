@@ -6,7 +6,6 @@ import gsap from "gsap";
 interface HeroSlide {
   src: string;
   alt: string;
-  eyebrow: string;
   title: string;
   description: string;
   tags: { icon: string; label: string }[];
@@ -19,7 +18,6 @@ const slides: HeroSlide[] = [
   {
     src: "/DWI%20Lawyer%20In%20Houston.jpg",
     alt: "Libros jurídicos y mazo sobre escritorio legal",
-    eyebrow: "Defensa penal",
     title: "Asistencia legal estratégica con presencia firme desde el primer paso",
     description: "Enfoque claro, análisis riguroso y acompañamiento preciso para conflictos que requieren criterio y respuesta concreta.",
     tags: [
@@ -34,7 +32,6 @@ const slides: HeroSlide[] = [
   {
     src: "/Miras%20Avukat%C4%B1.jpg",
     alt: "Biblioteca jurídica y ambientación de estudio legal",
-    eyebrow: "Estudio jurídico",
     title: "Mirada técnica, cercana y ordenada para cada consulta legal",
     description: "Asesoramiento profesional con comunicación directa y criterio jurídico para ordenar el caso desde el inicio.",
     tags: [
@@ -51,7 +48,6 @@ const slides: HeroSlide[] = [
 export default function HeroSlider() {
   const imageRef = useRef<HTMLImageElement>(null);
   const backdropRef = useRef<HTMLImageElement>(null);
-  const eyebrowRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
   const dotsRef = useRef<HTMLDivElement>(null);
@@ -107,7 +103,6 @@ export default function HeroSlider() {
             backdrop.src = slide.src;
             backdrop.style.objectPosition = slide.backdropPosition || slide.position || "center center";
           }
-          if (eyebrowRef.current) eyebrowRef.current.textContent = slide.eyebrow;
           if (titleRef.current) titleRef.current.textContent = slide.title;
           if (descRef.current) descRef.current.textContent = slide.description;
           renderTags(slide.tags);
@@ -119,7 +114,6 @@ export default function HeroSlider() {
             onComplete: () => { isTransitioningRef.current = false; },
           });
           inTl
-            .fromTo(".hero-eyebrow", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" })
             .fromTo(".hero-title", { opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)", duration: 0.7, ease: "power3.out" }, "<0.1")
             .fromTo(".hero-description", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "<0.15")
             .fromTo(".hero-tag", { opacity: 0, y: 15, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.08, ease: "back.out(1.3)" }, "<0.1");
@@ -129,8 +123,7 @@ export default function HeroSlider() {
       outTl
         .to(".hero-tag", { opacity: 0, y: -10, scale: 0.85, duration: 0.3, stagger: 0.04, ease: "power2.in" })
         .to(".hero-description", { opacity: 0, y: -15, duration: 0.3, ease: "power2.in" }, "<0.05")
-        .to(".hero-title", { opacity: 0, y: -25, clipPath: "inset(0 0 100% 0)", duration: 0.4, ease: "power2.in" }, "<0.05")
-        .to(".hero-eyebrow", { opacity: 0, x: 20, duration: 0.3, ease: "power2.in" }, "<0.05");
+        .to(".hero-title", { opacity: 0, y: -25, clipPath: "inset(0 0 100% 0)", duration: 0.4, ease: "power2.in" }, "<0.05");
 
       img?.classList.remove("is-visible");
     },
@@ -193,9 +186,6 @@ export default function HeroSlider() {
       <div className="relative z-10 mx-auto flex min-h-[420px] w-full max-w-screen-2xl items-center px-4 pt-[5.5rem] pb-14 md:min-h-[640px] md:px-6 md:py-20">
         <div className="hero-grid w-full">
           <div className="hero-copy space-y-6 reveal-up" data-animate="hero-copy">
-            <div ref={eyebrowRef} className="hero-eyebrow">
-              {firstSlide.eyebrow}
-            </div>
             <h1 ref={titleRef} className="hero-title">
               {firstSlide.title}
             </h1>
