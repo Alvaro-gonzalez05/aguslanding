@@ -14,6 +14,9 @@ export default function Footer() {
           </div>
           <div className="flex flex-col items-center gap-6 md:items-end md:gap-8">
             <div className="flex flex-wrap justify-center items-center gap-3 text-[10px] font-sans tracking-[0.2em] uppercase text-secondary">
+              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/">Inicio</a>
+              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/areas">Áreas</a>
+              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/sobre_mi">Sobre mí</a>
               <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="https://wa.me/542616399640" target="_blank" rel="noreferrer">WhatsApp</a>
               <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="https://www.google.com/maps/search/?api=1&query=Loria+Oeste+165+Godoy+Cruz+Mendoza" target="_blank" rel="noreferrer">Ubicación</a>
             </div>
