@@ -16,7 +16,7 @@ interface HeroSlide {
 
 const slides: HeroSlide[] = [
   {
-    src: "/DWI%20Lawyer%20In%20Houston.jpg",
+    src: "/hero-1.webp",
     alt: "Libros jurídicos y mazo sobre escritorio legal",
     title: "Asistencia legal estratégica con presencia firme desde el primer paso",
     description: "Enfoque claro, análisis riguroso y acompañamiento preciso para conflictos que requieren criterio y respuesta concreta.",
@@ -30,7 +30,7 @@ const slides: HeroSlide[] = [
     backdropPosition: "center 28%",
   },
   {
-    src: "/Miras%20Avukat%C4%B1.jpg",
+    src: "/hero-2.webp",
     alt: "Biblioteca jurídica y ambientación de estudio legal",
     title: "Mirada técnica, cercana y ordenada para cada consulta legal",
     description: "Asesoramiento profesional con comunicación directa y criterio jurídico para ordenar el caso desde el inicio.",
@@ -179,6 +179,10 @@ export default function HeroSlider() {
           alt={firstSlide.alt}
           className="hero-slide is-visible"
           src={firstSlide.src}
+          fetchPriority="high"
+          decoding="async"
+          width={735}
+          height={587}
           style={{ objectFit: firstSlide.fit as "cover" | "contain", objectPosition: firstSlide.position }}
         />
       </div>
