@@ -1179,3 +1179,118 @@ body {
   min-width: 3rem;
   line-height: 1;
 }
+
+/* ── Floating WhatsApp button ── */
+.wa-fab {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.85rem;
+}
+@media (min-width: 768px) {
+  .wa-fab { right: 1.75rem; bottom: 1.75rem; }
+}
+.wa-fab__button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border: none;
+  border-radius: 9999px;
+  background: #25d366;
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 12px 28px -8px rgba(37, 211, 102, 0.55), 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), background 200ms ease;
+}
+.wa-fab__button:hover { transform: scale(1.06); }
+.wa-fab__button.is-active { background: #1fae57; transform: scale(0.96); }
+.wa-fab__glyph { width: 1.9rem; height: 1.9rem; position: relative; z-index: 1; }
+.wa-fab__glyph-sm { width: 1.15rem; height: 1.15rem; }
+.wa-fab__pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: #25d366;
+  opacity: 0.55;
+  z-index: 0;
+  animation: waPulse 2.4s ease-out infinite;
+}
+.wa-fab__button.is-active .wa-fab__pulse { animation: none; opacity: 0; }
+@keyframes waPulse {
+  0% { transform: scale(1); opacity: 0.5; }
+  70% { transform: scale(1.7); opacity: 0; }
+  100% { transform: scale(1.7); opacity: 0; }
+}
+.wa-fab__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: min(17rem, calc(100vw - 2.5rem));
+  padding: 0.5rem;
+  border-radius: 1.1rem;
+  background: rgba(20, 24, 28, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 45px -12px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(14px);
+  transform-origin: bottom right;
+  transform: translateY(8px) scale(0.94);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 200ms cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.wa-fab__menu.is-open {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+.wa-fab__item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.7rem 0.75rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: #f4f6f8;
+  text-align: left;
+  cursor: pointer;
+  transition: background 150ms ease;
+}
+.wa-fab__item:hover { background: rgba(255, 255, 255, 0.06); }
+.wa-fab__item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.7rem;
+  background: rgba(95, 174, 204, 0.16);
+  color: var(--accent-strong);
+}
+.wa-fab__item-icon--green { background: rgba(37, 211, 102, 0.16); color: #25d366; }
+.wa-fab__item-text { display: flex; flex-direction: column; line-height: 1.2; }
+.wa-fab__item-title {
+  font-family: var(--font-label);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+.wa-fab__item-sub {
+  font-size: 0.7rem;
+  color: rgba(244, 246, 248, 0.55);
+  margin-top: 0.1rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .wa-fab__pulse { animation: none; opacity: 0; }
+  .wa-fab__menu { transition: opacity 150ms ease; transform: none; }
+  .wa-fab__menu.is-open { transform: none; }
+}

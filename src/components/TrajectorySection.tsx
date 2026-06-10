@@ -5,8 +5,10 @@ export default function TrajectorySection() {
     <section className="relative z-10 py-14 md:py-24 space-y-12" id="trayectoria">
       <div className="section-shell px-4 md:px-6 space-y-12">
         <div className="space-y-4 max-w-2xl reveal-soft" data-animate="section-heading">
-          <span className="section-kicker font-label text-xs uppercase tracking-[0.3em] font-black">Nuestra trayectoria</span>
-          <h2 className="font-headline text-2xl md:text-3xl leading-snug text-on-surface">Experiencia jurídica con mirada estratégica</h2>
+          <span className="section-kicker font-label text-[0.7rem] uppercase tracking-[0.35em] font-bold">Nuestra trayectoria</span>
+          <h2 className="font-headline font-bold uppercase leading-[0.95] text-on-surface" style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)", letterSpacing: "-0.03em" }}>
+            Experiencia jurídica<br />con mirada estratégica
+          </h2>
         </div>
         <div className="grid gap-8 lg:grid-cols-[minmax(0,34rem)_minmax(0,1fr)] lg:items-center">
           <div className="trajectory-visual aspect-[4/5] sm:aspect-[5/4] lg:aspect-[3/4] reveal-soft -mb-8 md:-mb-20 lg:-mb-24" data-animate="trajectory-media">

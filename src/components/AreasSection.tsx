@@ -11,12 +11,14 @@ const areas = [
 
 export default function AreasSection() {
   return (
-    <section className="pt-6 pb-14 md:pt-10 md:pb-24 bg-surface" id="areas">
-      <div className="section-shell px-4 md:px-6 space-y-10">
+    <section className="pt-16 pb-16 md:pt-24 md:pb-28 bg-surface" id="areas">
+      <div className="section-shell px-4 md:px-6 space-y-10 md:space-y-14">
         <div className="space-y-4 max-w-2xl reveal-soft" data-animate="section-heading">
-          <span className="section-kicker font-label text-xs uppercase tracking-[0.3em] font-black">Áreas de práctica</span>
-          <h2 className="font-headline text-2xl md:text-3xl leading-snug text-on-surface">Asistencia legal enfocada en tus derechos</h2>
-          <p className="text-secondary text-base leading-relaxed">Atención profesional en conflictos de salud, trabajo, sucesiones y reclamos indemnizatorios, con una estrategia clara para cada caso.</p>
+          <span className="section-kicker font-label text-[0.7rem] uppercase tracking-[0.35em] font-bold">Áreas de práctica</span>
+          <h2 className="font-headline font-bold uppercase leading-[0.95] text-on-surface" style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)", letterSpacing: "-0.03em" }}>
+            Asistencia legal<br />enfocada en tus derechos
+          </h2>
+          <p className="text-secondary text-base leading-relaxed max-w-xl pt-1">Atención profesional en conflictos de salud, trabajo, sucesiones y reclamos indemnizatorios, con una estrategia clara para cada caso.</p>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {areas.map((area) => (

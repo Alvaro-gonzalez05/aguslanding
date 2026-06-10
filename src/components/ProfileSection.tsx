@@ -1,12 +1,20 @@
+"use client";
+
 import Image from "next/image";
 
-export default function ProfileSection() {
+interface ProfileSectionProps {
+  onConsultaOpen: () => void;
+}
+
+export default function ProfileSection({ onConsultaOpen }: ProfileSectionProps) {
   return (
-    <section className="py-14 md:py-24 bg-surface-container-low" id="perfil">
+    <section className="py-16 md:py-28 bg-surface-container-low" id="perfil">
       <div className="section-shell px-4 md:px-6">
-        <div className="mb-12 space-y-4 reveal-soft" data-animate="section-heading">
-          <span className="section-kicker font-label text-xs uppercase tracking-[0.3em] font-black">Perfil profesional</span>
-          <h2 className="font-headline text-2xl md:text-3xl text-on-surface">Agustina Gonzalez Vicario</h2>
+        <div className="mb-12 md:mb-16 space-y-3 reveal-soft" data-animate="section-heading">
+          <span className="section-kicker font-label text-[0.7rem] uppercase tracking-[0.35em] font-bold">Perfil profesional</span>
+          <h2 className="font-headline font-bold uppercase leading-[0.95] text-on-surface" style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)", letterSpacing: "-0.03em" }}>
+            Agustina Gonzalez<br />Vicario
+          </h2>
         </div>
         <div className="profile-grid">
           <div className="group reveal-soft" data-animate="profile-photo">
@@ -42,7 +50,7 @@ export default function ProfileSection() {
               </div>
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a className="gold-gradient inline-flex items-center justify-center rounded-full px-6 py-3 text-center font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary" href="#consulta">Solicitar consulta</a>
+              <button type="button" onClick={onConsultaOpen} className="gold-gradient inline-flex items-center justify-center rounded-full px-6 py-3 text-center font-label text-xs font-bold uppercase tracking-[0.18em] text-on-primary">Solicitar consulta</button>
               <a className="inline-flex items-center justify-center rounded-full border border-primary/35 px-6 py-3 text-center font-label text-xs font-semibold uppercase tracking-[0.18em] text-primary" href="/sobre_mi">Sobre mí</a>
             </div>
           </div>

@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileDrawer from "@/components/MobileDrawer";
 import ConsultationModal from "@/components/ConsultationModal";
+import WhatsAppFab from "@/components/WhatsAppFab";
 import { useAreasAnimations } from "@/hooks/useAreasAnimations";
 
 const areas = [
@@ -170,6 +171,7 @@ export default function AreasPage() {
       <Footer />
       <MobileDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} onConsultaOpen={() => setConsultaOpen(true)} />
       <ConsultationModal isOpen={consultaOpen} onClose={() => setConsultaOpen(false)} />
+      <WhatsAppFab onConsultaOpen={() => setConsultaOpen(true)} />
     </>
   );
 }

@@ -4,7 +4,6 @@ import { useState } from "react";
 import Header from "@/components/Header";
 import HeroSlider from "@/components/HeroSlider";
 import AreasSection from "@/components/AreasSection";
-import ConsultationForm from "@/components/ConsultationForm";
 import TrajectorySection from "@/components/TrajectorySection";
 import StatsSection from "@/components/StatsSection";
 import ProfileSection from "@/components/ProfileSection";
@@ -12,6 +11,7 @@ import ContactBand from "@/components/ContactBand";
 import Footer from "@/components/Footer";
 import MobileDrawer from "@/components/MobileDrawer";
 import ConsultationModal from "@/components/ConsultationModal";
+import WhatsAppFab from "@/components/WhatsAppFab";
 import { useGSAPAnimations } from "@/hooks/useGSAPAnimations";
 
 export default function Home() {
@@ -25,15 +25,15 @@ export default function Home() {
       <main>
         <HeroSlider />
         <AreasSection />
-        <ConsultationForm />
         <TrajectorySection />
         <StatsSection />
-        <ProfileSection />
-        <ContactBand />
+        <ProfileSection onConsultaOpen={() => setConsultaOpen(true)} />
+        <ContactBand onConsultaOpen={() => setConsultaOpen(true)} />
       </main>
       <Footer />
       <MobileDrawer isOpen={drawerOpen} onClose={() => setDrawerOpen(false)} onConsultaOpen={() => setConsultaOpen(true)} />
       <ConsultationModal isOpen={consultaOpen} onClose={() => setConsultaOpen(false)} />
+      <WhatsAppFab onConsultaOpen={() => setConsultaOpen(true)} />
     </>
   );
 }
