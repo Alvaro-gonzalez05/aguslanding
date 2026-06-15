@@ -12,25 +12,6 @@ export function useGSAPAnimations() {
 
     const ta = "play reverse play reverse";
 
-    /* ── Hero entrance timeline ── */
-    const heroTl = gsap.timeline({ delay: 0.3 });
-    heroTl
-      .fromTo("[data-animate='hero-copy']",
-        { opacity: 0, y: 80, scale: 0.92 },
-        { opacity: 1, y: 0, scale: 1, duration: 1.2 })
-      .fromTo(".hero-eyebrow",
-        { opacity: 0, x: -40 },
-        { opacity: 1, x: 0, duration: 0.7 }, "<0.2")
-      .fromTo(".hero-title",
-        { opacity: 0, y: 50, clipPath: "inset(100% 0 0 0)" },
-        { opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)", duration: 1 }, "<0.15")
-      .fromTo(".hero-description",
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8 }, "<0.3")
-      .fromTo(".hero-tag",
-        { opacity: 0, y: 20, scale: 0.8 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.5, stagger: 0.1 }, "<0.2");
-
     /* ── 24/7 Service card ── */
     gsap.fromTo("[data-animate='service-card']",
       { opacity: 0, y: 60, scale: 0.9, rotationX: 8 },

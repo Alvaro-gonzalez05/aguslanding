@@ -45,15 +45,15 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
 
 export default function StatsSection() {
   return (
-    <section className="relative z-0 bg-inverse-surface text-surface px-6 pt-28 pb-20 md:pt-32">
+    <section className="relative z-0 bg-surface-container-lowest px-6 pt-28 pb-20 md:pt-32">
       <div className="section-shell stat-grid px-4 md:px-6">
         {stats.map((stat) => (
           <div key={stat.label} className="stat-item reveal-soft" data-animate="stat-card">
             <CountUp value={stat.value} suffix={stat.suffix} />
-            <p className="stat-label font-label text-xs uppercase tracking-[0.25em] font-bold text-primary-fixed-dim mt-3">
+            <p className="stat-label font-label text-xs uppercase tracking-[0.25em] font-bold mt-3" style={{ color: "#5b768e" }}>
               {stat.label}
             </p>
-            <p className="text-sm leading-relaxed text-surface-variant/70 mt-2 max-w-[18rem] mx-auto">
+            <p className="text-sm leading-relaxed text-on-surface-variant mt-2 max-w-[18rem] mx-auto">
               {stat.desc}
             </p>
           </div>

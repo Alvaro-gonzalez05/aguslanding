@@ -1,205 +1,115 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-interface HeroSlide {
-  src: string;
-  alt: string;
-  title: string;
-  description: string;
-  tags: { icon: string; label: string }[];
-  position: string;
-  fit: string;
-  backdropPosition: string;
-}
-
-const slides: HeroSlide[] = [
+const slides = [
   {
-    src: "/hero-1.webp",
-    alt: "Libros jurídicos y mazo sobre escritorio legal",
     title: "Asistencia legal estratégica con presencia firme desde el primer paso",
     description: "Enfoque claro, análisis riguroso y acompañamiento preciso para conflictos que requieren criterio y respuesta concreta.",
-    tags: [
-      { icon: "gavel", label: "Estrategia" },
-      { icon: "shield", label: "Defensa" },
-      { icon: "verified_user", label: "Respaldo legal" },
-    ],
-    position: "center 28%",
-    fit: "cover",
-    backdropPosition: "center 28%",
   },
   {
-    src: "/hero-2.webp",
-    alt: "Biblioteca jurídica y ambientación de estudio legal",
     title: "Mirada técnica, cercana y ordenada para cada consulta legal",
     description: "Asesoramiento profesional con comunicación directa y criterio jurídico para ordenar el caso desde el inicio.",
-    tags: [
-      { icon: "balance", label: "Criterio jurídico" },
-      { icon: "menu_book", label: "Trayectoria" },
-      { icon: "handshake", label: "Acompañamiento" },
-    ],
-    position: "center center",
-    fit: "cover",
-    backdropPosition: "center center",
+  },
+  {
+    title: "Criterio jurídico preciso en cada etapa del proceso",
+    description: "Acompañamiento integral con visión estratégica para defender sus intereses con rigor y determinación.",
   },
 ];
 
+const tags = [
+  { icon: "gavel", label: "Estrategia" },
+  { icon: "shield", label: "Defensa" },
+  { icon: "verified_user", label: "Respaldo legal" },
+];
+
 export default function HeroSlider() {
-  const imageRef = useRef<HTMLImageElement>(null);
-  const backdropRef = useRef<HTMLImageElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const descRef = useRef<HTMLParagraphElement>(null);
-  const dotsRef = useRef<HTMLDivElement>(null);
-  const tagsRef = useRef<HTMLDivElement>(null);
-  const currentIndexRef = useRef(0);
-  const isTransitioningRef = useRef(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const renderDots = useCallback(() => {
-    if (!dotsRef.current) return;
-    dotsRef.current.innerHTML = "";
-    slides.forEach((_, i) => {
-      const dot = document.createElement("button");
-      dot.type = "button";
-      dot.className = `hero-dot${i === currentIndexRef.current ? " is-active" : ""}`;
-      dot.setAttribute("aria-label", `Ver imagen ${i + 1}`);
-      dot.dataset.index = String(i);
-      dotsRef.current!.appendChild(dot);
-    });
-  }, []);
-
-  const renderTags = useCallback((tags: HeroSlide["tags"]) => {
-    if (!tagsRef.current) return;
-    tagsRef.current.innerHTML = "";
-    tags.forEach((tag) => {
-      const chip = document.createElement("span");
-      chip.className = "hero-tag";
-      chip.innerHTML = `<span class="material-symbols-outlined text-[18px]">${tag.icon}</span>${tag.label}`;
-      tagsRef.current!.appendChild(chip);
-    });
-  }, []);
-
-  const goToSlide = useCallback(
-    (index: number) => {
-      if (isTransitioningRef.current || index === currentIndexRef.current) return;
-      isTransitioningRef.current = true;
-      currentIndexRef.current = index;
-
-      const img = imageRef.current;
-      const backdrop = backdropRef.current;
-      const slide = slides[index];
-
-      const outTl = gsap.timeline({
-        onComplete: () => {
-          if (img) {
-            img.src = slide.src;
-            img.alt = slide.alt;
-            img.style.objectFit = slide.fit || "cover";
-            img.style.objectPosition = slide.position || "center center";
-            img.classList.toggle("is-contained", slide.fit === "contain");
-          }
-          if (backdrop) {
-            backdrop.src = slide.src;
-            backdrop.style.objectPosition = slide.backdropPosition || slide.position || "center center";
-          }
-          if (titleRef.current) titleRef.current.textContent = slide.title;
-          if (descRef.current) descRef.current.textContent = slide.description;
-          renderTags(slide.tags);
-          renderDots();
-
-          img?.classList.add("is-visible");
-
-          const inTl = gsap.timeline({
-            onComplete: () => { isTransitioningRef.current = false; },
-          });
-          inTl
-            .fromTo(".hero-title", { opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" }, { opacity: 1, y: 0, clipPath: "inset(0% 0 0 0)", duration: 0.7, ease: "power3.out" }, "<0.1")
-            .fromTo(".hero-description", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }, "<0.15")
-            .fromTo(".hero-tag", { opacity: 0, y: 15, scale: 0.85 }, { opacity: 1, y: 0, scale: 1, duration: 0.4, stagger: 0.08, ease: "back.out(1.3)" }, "<0.1");
-        },
-      });
-
-      outTl
-        .to(".hero-tag", { opacity: 0, y: -10, scale: 0.85, duration: 0.3, stagger: 0.04, ease: "power2.in" })
-        .to(".hero-description", { opacity: 0, y: -15, duration: 0.3, ease: "power2.in" }, "<0.05")
-        .to(".hero-title", { opacity: 0, y: -25, clipPath: "inset(0 0 100% 0)", duration: 0.4, ease: "power2.in" }, "<0.05");
-
-      img?.classList.remove("is-visible");
-    },
-    [renderDots, renderTags]
-  );
+  const indexRef = useRef(0);
+  const animatingRef = useRef(false);
 
   useEffect(() => {
-    const slide = slides[0];
-    renderTags(slide.tags);
-    renderDots();
+    const tl = gsap.timeline({ delay: 0.2 });
+    tl.fromTo(".hero-eyebrow-text", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" })
+      .fromTo(titleRef.current, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "<0.15")
+      .fromTo(".hero-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.out" }, "<0.3")
+      .fromTo(descRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.75, ease: "power2.out" }, "<0.15")
+      .fromTo(".hero-tag", { opacity: 0, y: 14, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.1, ease: "back.out(1.4)" }, "<0.2");
 
-    intervalRef.current = setInterval(() => {
-      goToSlide((currentIndexRef.current + 1) % slides.length);
-    }, 8000);
+    const cycle = () => {
+      if (animatingRef.current || !titleRef.current || !descRef.current) return;
+      animatingRef.current = true;
 
-    const dotsEl = dotsRef.current;
-    const handleDotClick = (e: Event) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName !== "BUTTON") return;
-      const nextIndex = Number(target.dataset.index);
-      if (isNaN(nextIndex) || nextIndex === currentIndexRef.current || isTransitioningRef.current) return;
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      goToSlide(nextIndex);
-      intervalRef.current = setInterval(() => {
-        goToSlide((currentIndexRef.current + 1) % slides.length);
-      }, 8000);
+      gsap.to([titleRef.current, descRef.current], {
+        opacity: 0, y: -24, duration: 0.42, ease: "power2.in",
+        onComplete: () => {
+          indexRef.current = (indexRef.current + 1) % slides.length;
+          const s = slides[indexRef.current];
+          titleRef.current!.textContent = s.title;
+          descRef.current!.textContent = s.description;
+          gsap.fromTo(
+            [titleRef.current!, descRef.current!],
+            { opacity: 0, y: 28 },
+            { opacity: 1, y: 0, duration: 0.7, ease: "power3.out", stagger: 0.13,
+              onComplete: () => { animatingRef.current = false; } }
+          );
+        },
+      });
     };
 
-    dotsEl?.addEventListener("click", handleDotClick);
-
-    return () => {
-      if (intervalRef.current) clearInterval(intervalRef.current);
-      dotsEl?.removeEventListener("click", handleDotClick);
-    };
-  }, [goToSlide, renderDots, renderTags]);
-
-  const firstSlide = slides[0];
+    const id = setInterval(cycle, 4500);
+    return () => clearInterval(id);
+  }, []);
 
   return (
-    <section className="relative min-h-[420px] overflow-hidden bg-inverse-surface md:min-h-[640px]" id="inicio">
-      <div className="hero-media-shell" aria-hidden="true">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          ref={backdropRef}
-          alt="Fondo difuminado de la imagen principal"
-          className="hero-backdrop-slide"
-          src={firstSlide.src}
-          style={{ objectPosition: firstSlide.backdropPosition }}
-        />
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          ref={imageRef}
-          alt={firstSlide.alt}
-          className="hero-slide is-visible"
-          src={firstSlide.src}
-          fetchPriority="high"
-          decoding="async"
-          width={735}
-          height={587}
-          style={{ objectFit: firstSlide.fit as "cover" | "contain", objectPosition: firstSlide.position }}
-        />
-      </div>
-      <div className="hero-ambient absolute inset-0"></div>
-      <div className="relative z-10 mx-auto flex min-h-[420px] w-full max-w-screen-2xl items-center px-4 pt-[5.5rem] pb-14 md:min-h-[640px] md:px-6 md:py-20">
-        <div className="hero-grid w-full">
-          <div className="hero-copy space-y-6 reveal-up" data-animate="hero-copy">
-            <h1 ref={titleRef} className="hero-title">
-              {firstSlide.title}
-            </h1>
-            <p ref={descRef} className="hero-description">
-              {firstSlide.description}
-            </p>
-            <div ref={tagsRef} className="hero-tags"></div>
-            <div ref={dotsRef} className="flex items-center justify-center gap-3 pt-4" aria-label="Galeria principal"></div>
-          </div>
-          <div className="hero-media-aura"></div>
+    <section
+      className="relative overflow-hidden"
+      style={{ backgroundColor: "#5b768e", minHeight: "100svh" }}
+      id="inicio"
+    >
+      {/* Soft light orbs */}
+      <div className="hero-orb hero-orb--a" aria-hidden="true" />
+      <div className="hero-orb hero-orb--b" aria-hidden="true" />
+      <div className="hero-orb hero-orb--c" aria-hidden="true" />
+
+      {/* Concentric rings */}
+      <svg className="hero-rings" viewBox="0 0 900 900" aria-hidden="true" preserveAspectRatio="xMidYMid meet">
+        <circle cx="450" cy="450" r="160" fill="none" stroke="rgba(255,255,255,0.09)" strokeWidth="1.5" />
+        <circle cx="450" cy="450" r="290" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1.2" />
+        <circle cx="450" cy="450" r="420" fill="none" stroke="rgba(255,255,255,0.038)" strokeWidth="1" />
+        <circle cx="450" cy="450" r="550" fill="none" stroke="rgba(255,255,255,0.022)" strokeWidth="1" />
+      </svg>
+
+      {/* Content */}
+      <div
+        className="relative z-10 mx-auto flex w-full max-w-2xl flex-col items-center justify-center px-5 text-center md:px-8"
+        style={{ minHeight: "100svh", paddingTop: "5.5rem", paddingBottom: "3.5rem" }}
+      >
+        <p className="hero-eyebrow-text" style={{ opacity: 0 }}>
+          <span className="hero-eyebrow-bar" />
+          Abogada · Mendoza
+          <span className="hero-eyebrow-bar" />
+        </p>
+
+        <h1 ref={titleRef} className="hero-title mt-6" style={{ opacity: 0 }}>
+          {slides[0].title}
+        </h1>
+
+        <div className="hero-rule" style={{ opacity: 0 }} />
+
+        <p ref={descRef} className="hero-description" style={{ opacity: 0 }}>
+          {slides[0].description}
+        </p>
+
+        <div className="hero-tags mt-10">
+          {tags.map((tag) => (
+            <span key={tag.label} className="hero-tag" style={{ opacity: 0 }}>
+              <span className="material-symbols-outlined" style={{ fontSize: 15 }}>{tag.icon}</span>
+              {tag.label}
+            </span>
+          ))}
         </div>
       </div>
     </section>

@@ -1,39 +1,62 @@
-import Image from "next/image";
+"use client";
+
+const items = [
+  {
+    icon: "bolt",
+    title: "Respuesta inmediata",
+    desc: "Presentamos el amparo de forma urgente. En casos críticos, los jueces pueden ordenar medidas cautelares en horas para garantizar el acceso al tratamiento.",
+  },
+  {
+    icon: "health_and_safety",
+    title: "Cobertura integral",
+    desc: "Medicamentos de alto costo, cirugías, terapias, internaciones y toda prestación que una obra social, prepaga o el Estado niegue injustamente.",
+  },
+  {
+    icon: "task_alt",
+    title: "Alta tasa de éxito",
+    desc: "El amparo de salud es una herramienta judicial efectiva. La mayoría de los casos logran resolución favorable cuando se presentan correctamente.",
+  },
+];
+
+const chips = ["Obras sociales", "Prepagas", "Medicamentos", "Cirugías", "Terapias", "Prótesis"];
 
 export default function TrajectorySection() {
   return (
-    <section className="relative z-10 py-14 md:py-24 space-y-12" id="trayectoria">
-      <div className="section-shell px-4 md:px-6 space-y-12">
-        <div className="space-y-4 max-w-2xl reveal-soft" data-animate="section-heading">
-          <span className="section-kicker font-label text-[0.7rem] uppercase tracking-[0.35em] font-bold">Nuestra trayectoria</span>
-          <h2 className="font-headline font-bold uppercase leading-[0.95] text-on-surface" style={{ fontSize: "clamp(2rem, 5vw, 3.75rem)", letterSpacing: "-0.03em" }}>
-            Experiencia jurídica<br />con mirada estratégica
-          </h2>
-        </div>
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,34rem)_minmax(0,1fr)] lg:items-center">
-          <div className="trajectory-visual aspect-[4/5] sm:aspect-[5/4] lg:aspect-[3/4] reveal-soft -mb-8 md:-mb-20 lg:-mb-24" data-animate="trajectory-media">
-            <div className="trajectory-statue-glow"></div>
-            <div className="trajectory-base-shadow"></div>
-            <div className="trajectory-base-glow"></div>
-            <div className="trajectory-sheen"></div>
-            <div className="trajectory-reflect"></div>
-            <Image alt="Estatua de la justicia en bronce" className="trajectory-statue" src="/imagenes/estatua-transparente.png" fill sizes="(max-width: 1024px) 100vw, 34rem" />
-          </div>
-          <div className="rounded-[1.5rem] border border-outline-variant/25 bg-surface-container-lowest p-6 shadow-xl md:p-8 reveal-soft" data-animate="trajectory-copy">
-            <p className="text-on-surface-variant italic font-serif text-lg leading-relaxed md:text-xl">
-              &ldquo;Mi compromiso es ofrecer una defensa clara, humana y rigurosa, enfocada en proteger tus intereses con seriedad y convicción.&rdquo;
+    <section className="amparo-section" id="trayectoria">
+      <div className="section-shell px-4 md:px-6">
+        <div className="amparo-grid">
+
+          {/* Left: heading + text */}
+          <div className="amparo-left" data-animate="section-heading">
+            <span className="amparo-kicker">Especialidad principal</span>
+            <h2 className="amparo-heading">
+              Amparos<br />de Salud
+            </h2>
+            <p className="amparo-body">
+              Cuando una obra social, prepaga o el Estado te niega el acceso a un tratamiento, medicamento o cirugía, existe una acción legal urgente para obligarlos a cumplir.
             </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-xl bg-surface-container-low p-4">
-                <p className="text-xs font-label font-bold uppercase tracking-[0.2em] text-primary">Atención personalizada</p>
-                <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">Cada caso se analiza de forma individual, con estrategia legal adaptada a tu situación.</p>
-              </div>
-              <div className="rounded-xl bg-surface-container-low p-4">
-                <p className="text-xs font-label font-bold uppercase tracking-[0.2em] text-primary">Seguimiento cercano</p>
-                <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">Comunicación clara durante todo el proceso, para que sepas cada paso que se da.</p>
-              </div>
+            <div className="amparo-chips">
+              {chips.map((c) => (
+                <span key={c} className="amparo-chip">{c}</span>
+              ))}
             </div>
           </div>
+
+          {/* Right: feature cards */}
+          <div className="amparo-cards-col">
+            {items.map((item) => (
+              <div key={item.title} className="amparo-card">
+                <div className="amparo-card-icon">
+                  <span className="material-symbols-outlined" style={{ fontSize: 20 }}>{item.icon}</span>
+                </div>
+                <div>
+                  <p className="amparo-card-title">{item.title}</p>
+                  <p className="amparo-card-desc">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
         </div>
       </div>
     </section>
