@@ -763,7 +763,7 @@ html {
 .amparo-card-desc {
   font-size: 0.87rem;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.65); /* contraste AA (6:1) sobre #2e3742 */
 }
 @media (min-width: 768px) {
   .amparo-section { padding: 7rem 0; }
