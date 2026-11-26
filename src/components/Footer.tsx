@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { googleMapsUrl, instagramUrl } from "@/lib/site";
 
 export default function Footer() {
@@ -15,9 +16,9 @@ export default function Footer() {
           </div>
           <div className="flex flex-col items-center gap-6 md:items-end md:gap-8">
             <div className="flex flex-wrap justify-center items-center gap-3 text-[10px] font-sans tracking-[0.2em] uppercase text-secondary">
-              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/">Inicio</a>
-              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/areas">Áreas</a>
-              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/sobre_mi">Sobre mí</a>
+              <Link className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/">Inicio</Link>
+              <Link className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/areas">Áreas</Link>
+              <Link className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/sobre_mi">Sobre mí</Link>
               <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="https://wa.me/542616399640" target="_blank" rel="noreferrer">WhatsApp</a>
               <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href={googleMapsUrl} target="_blank" rel="noreferrer">Google Maps</a>
               <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href={instagramUrl} target="_blank" rel="noreferrer">Instagram</a>

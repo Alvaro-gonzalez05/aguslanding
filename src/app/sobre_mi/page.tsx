@@ -102,7 +102,7 @@ export default function SobreMiPage() {
                   Trayectoria
                 </span>
                 <p className="sobre-pullquote font-headline">
-                  "Cada cliente atraviesa situaciones personales complejas — el acompañamiento cercano marca la diferencia."
+                  &ldquo;Cada cliente atraviesa situaciones personales complejas — el acompañamiento cercano marca la diferencia.&rdquo;
                 </p>
               </div>
 

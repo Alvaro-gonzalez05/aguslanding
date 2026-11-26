@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import Icon from "@/components/Icon";
 
 export default function Header({ onMenuOpen, onConsultaOpen }: { onMenuOpen: () => void; onConsultaOpen?: () => void }) {
@@ -102,11 +103,11 @@ export default function Header({ onMenuOpen, onConsultaOpen }: { onMenuOpen: () 
         </div>
         <div className="header-desktop-row">
           <nav className="header-nav hidden md:flex items-center gap-5 text-[10px] font-label font-semibold uppercase tracking-[0.14em] text-on-surface/80">
-            <a className="top-nav-link" href="/">Inicio</a>
-            <a className="top-nav-link" href="/areas">Áreas</a>
-            <a className="top-nav-link" href="/#trayectoria">Trayectoria</a>
-            <a className="top-nav-link" href="/sobre_mi">Sobre mí</a>
-            <a className="top-nav-link" href="/#contacto">Contacto</a>
+            <Link className="top-nav-link" href="/">Inicio</Link>
+            <Link className="top-nav-link" href="/areas">Áreas</Link>
+            <Link className="top-nav-link" href="/#trayectoria">Trayectoria</Link>
+            <Link className="top-nav-link" href="/sobre_mi">Sobre mí</Link>
+            <Link className="top-nav-link" href="/#contacto">Contacto</Link>
           </nav>
         </div>
         <button

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import Icon from "@/components/Icon";
 
 interface MobileDrawerProps {
@@ -26,11 +27,11 @@ export default function MobileDrawer({ isOpen, onClose, onConsultaOpen }: Mobile
           </button>
         </div>
         <div className="mobile-drawer__links">
-          <a className="mobile-drawer__link" href="/" onClick={onClose}><Icon name="account_balance" />Inicio</a>
-          <a className="mobile-drawer__link" href="/areas" onClick={onClose}><Icon name="gavel" />Áreas de práctica</a>
-          <a className="mobile-drawer__link" href="/#trayectoria" onClick={onClose}><Icon name="menu_book" />Trayectoria</a>
-          <a className="mobile-drawer__link" href="/sobre_mi" onClick={onClose}><Icon name="person" />Sobre mí</a>
-          <a className="mobile-drawer__link" href="/#contacto" onClick={onClose}><Icon name="mail" />Contacto</a>
+          <Link className="mobile-drawer__link" href="/" onClick={onClose}><Icon name="account_balance" />Inicio</Link>
+          <Link className="mobile-drawer__link" href="/areas" onClick={onClose}><Icon name="gavel" />Áreas de práctica</Link>
+          <Link className="mobile-drawer__link" href="/#trayectoria" onClick={onClose}><Icon name="menu_book" />Trayectoria</Link>
+          <Link className="mobile-drawer__link" href="/sobre_mi" onClick={onClose}><Icon name="person" />Sobre mí</Link>
+          <Link className="mobile-drawer__link" href="/#contacto" onClick={onClose}><Icon name="mail" />Contacto</Link>
         </div>
         <div className="mobile-drawer__cta">
           <button className="gold-gradient inline-flex w-full items-center justify-center rounded-full px-5 py-3 text-center font-label text-xs font-bold uppercase tracking-[0.14em] text-on-primary" onClick={() => { onClose(); onConsultaOpen?.(); }} type="button">Agendar consulta</button>
