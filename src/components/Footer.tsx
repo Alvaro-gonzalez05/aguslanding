@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { googleMapsUrl, instagramUrl } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -18,7 +19,8 @@ export default function Footer() {
               <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/areas">Áreas</a>
               <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="/sobre_mi">Sobre mí</a>
               <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="https://wa.me/542616399640" target="_blank" rel="noreferrer">WhatsApp</a>
-              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href="https://www.google.com/maps/search/?api=1&query=Loria+Oeste+165+Godoy+Cruz+Mendoza" target="_blank" rel="noreferrer">Ubicación</a>
+              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href={googleMapsUrl} target="_blank" rel="noreferrer">Google Maps</a>
+              <a className="rounded-full border border-outline-variant/30 px-4 py-2 hover:border-primary/50 hover:text-primary transition-colors" href={instagramUrl} target="_blank" rel="noreferrer">Instagram</a>
             </div>
             <a
               href="https://www.codeadesarrollos.com"

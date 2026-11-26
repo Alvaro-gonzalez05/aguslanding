@@ -36,9 +36,12 @@ function CountUp({ value, suffix }: { value: number; suffix: string }) {
     return () => window.removeEventListener("stats-visible", handler);
   }, [animate]);
 
+  // El HTML lleva el número final (lo que ve Google y quien no tiene JS);
+  // el conteo desde 0 arranca recién cuando la tarjeta entra en pantalla.
   return (
     <span ref={ref} className="stat-number font-headline">
-      0{suffix}
+      {value}
+      {suffix}
     </span>
   );
 }
