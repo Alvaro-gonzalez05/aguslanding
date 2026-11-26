@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect } from "react";
+import Icon from "@/components/Icon";
 
 const areaOptions = [
   "Amparos de salud",
@@ -70,7 +71,7 @@ export default function ConsultationModal({ isOpen, onClose }: ConsultationModal
     <div className="consultation-modal-overlay" onClick={onClose}>
       <div className="consultation-modal" onClick={(e) => e.stopPropagation()}>
         <button className="consultation-modal__close" onClick={onClose} type="button" aria-label="Cerrar">
-          <span className="material-symbols-outlined">close</span>
+          <Icon name="close" />
         </button>
 
         <div className="space-y-4 mb-6">

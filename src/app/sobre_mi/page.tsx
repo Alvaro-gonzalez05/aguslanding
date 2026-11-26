@@ -8,6 +8,7 @@ import MobileDrawer from "@/components/MobileDrawer";
 import ConsultationModal from "@/components/ConsultationModal";
 import WhatsAppFab from "@/components/WhatsAppFab";
 import { useSobreMiAnimations } from "@/hooks/useSobreMiAnimations";
+import Icon, { type IconName } from "@/components/Icon";
 
 const values = [
   { icon: "balance", label: "Compromiso", desc: "Cada caso recibe dedicación plena desde el primer contacto." },
@@ -60,7 +61,7 @@ export default function SobreMiPage() {
                   type="button"
                 >
                   Agendar consulta
-                  <span className="material-symbols-outlined text-base ml-2" style={{ fontSize: 18 }}>arrow_forward</span>
+                  <Icon name="arrow_forward" className="text-base ml-2" style={{ fontSize: 18 }} />
                 </button>
               </div>
 
@@ -74,13 +75,14 @@ export default function SobreMiPage() {
                       fill
                       sizes="(max-width: 768px) 100vw, 45vw"
                       className="object-cover object-top"
-                      priority
+                      preload
+                      fetchPriority="high"
                     />
                     <div className="sobre-photo-overlay" />
                   </div>
                   {/* Floating badge */}
                   <div className="sobre-badge" data-animate="sobre-badge">
-                    <span className="material-symbols-outlined text-[var(--accent-strong)] text-xl">verified</span>
+                    <Icon name="verified" className="text-[var(--accent-strong)] text-xl" />
                     <span className="text-[0.65rem] uppercase tracking-[0.18em] font-bold text-on-surface">Matrícula activa</span>
                   </div>
                 </div>
@@ -135,7 +137,7 @@ export default function SobreMiPage() {
               {values.map((v, i) => (
                 <div key={v.label} className="sobre-value-card" data-animate="sobre-value" data-index={i}>
                   <div className="sobre-value-icon">
-                    <span className="material-symbols-outlined text-2xl text-[var(--accent-strong)]">{v.icon}</span>
+                    <Icon name={v.icon as IconName} className="text-2xl text-[var(--accent-strong)]" />
                   </div>
                   <h3 className="font-headline text-xl md:text-2xl font-bold uppercase text-surface mt-4" style={{ letterSpacing: '-0.02em' }}>
                     {v.label}
@@ -168,7 +170,7 @@ export default function SobreMiPage() {
                     <h3 className="font-headline text-xl md:text-3xl font-bold uppercase text-surface" style={{ letterSpacing: '-0.02em' }}>{s.label}</h3>
                     <p className="text-xs text-surface-variant/40 uppercase tracking-[0.2em] mt-1">{s.sub}</p>
                   </div>
-                  <span className="material-symbols-outlined text-surface-variant/20 text-3xl">{s.icon}</span>
+                  <Icon name={s.icon as IconName} className="text-surface-variant/20 text-3xl" />
                 </div>
               ))}
             </div>
@@ -190,7 +192,7 @@ export default function SobreMiPage() {
               type="button"
             >
               Agendar consulta
-              <span className="material-symbols-outlined text-base ml-2" style={{ fontSize: 18 }}>arrow_forward</span>
+              <Icon name="arrow_forward" className="text-base ml-2" style={{ fontSize: 18 }} />
             </button>
           </div>
         </section>

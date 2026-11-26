@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Icon, { type IconName } from "@/components/Icon";
 
 const slides = [
   {
@@ -31,13 +32,8 @@ export default function HeroSlider() {
   const animatingRef = useRef(false);
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 0.2 });
-    tl.fromTo(".hero-eyebrow-text", { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" })
-      .fromTo(titleRef.current, { opacity: 0, y: 36 }, { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "<0.15")
-      .fromTo(".hero-rule", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.7, ease: "power2.out" }, "<0.3")
-      .fromTo(descRef.current, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.75, ease: "power2.out" }, "<0.15")
-      .fromTo(".hero-tag", { opacity: 0, y: 14, scale: 0.86 }, { opacity: 1, y: 0, scale: 1, duration: 0.45, stagger: 0.1, ease: "back.out(1.4)" }, "<0.2");
-
+    // La entrada del hero es CSS (clases hero-enter-*, ver globals.css) para que el
+    // título se pinte sin esperar al JavaScript y no retrase el LCP.
     const cycle = () => {
       if (animatingRef.current || !titleRef.current || !descRef.current) return;
       animatingRef.current = true;
@@ -87,26 +83,26 @@ export default function HeroSlider() {
         className="relative z-10 mx-auto flex w-full max-w-2xl flex-col items-center justify-center px-5 text-center md:px-8"
         style={{ minHeight: "100svh", paddingTop: "5.5rem", paddingBottom: "3.5rem" }}
       >
-        <p className="hero-eyebrow-text" style={{ opacity: 0 }}>
+        <p className="hero-eyebrow-text hero-enter hero-enter--1">
           <span className="hero-eyebrow-bar" />
           Abogada · Mendoza
           <span className="hero-eyebrow-bar" />
         </p>
 
-        <h1 ref={titleRef} className="hero-title mt-6" style={{ opacity: 0 }}>
+        <h1 ref={titleRef} className="hero-title hero-enter hero-enter--2 mt-6">
           {slides[0].title}
         </h1>
 
-        <div className="hero-rule" style={{ opacity: 0 }} />
+        <div className="hero-rule hero-enter-rule" />
 
-        <p ref={descRef} className="hero-description" style={{ opacity: 0 }}>
+        <p ref={descRef} className="hero-description hero-enter hero-enter--3">
           {slides[0].description}
         </p>
 
         <div className="hero-tags mt-10">
           {tags.map((tag) => (
-            <span key={tag.label} className="hero-tag" style={{ opacity: 0 }}>
-              <span className="material-symbols-outlined" style={{ fontSize: 15 }}>{tag.icon}</span>
+            <span key={tag.label} className="hero-tag hero-enter hero-enter--tag">
+              <Icon name={tag.icon as IconName} style={{ fontSize: 15 }} />
               {tag.label}
             </span>
           ))}

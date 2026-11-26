@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import Icon from "@/components/Icon";
 
 export default function Header({ onMenuOpen, onConsultaOpen }: { onMenuOpen: () => void; onConsultaOpen?: () => void }) {
   const headerRef = useRef<HTMLElement>(null);
@@ -71,12 +72,14 @@ export default function Header({ onMenuOpen, onConsultaOpen }: { onMenuOpen: () 
       <div className="header-shell flex justify-between items-center gap-3 px-4 pt-2 pb-1.5 mx-auto md:px-6">
         <div className="header-top-row">
           <div className="header-brand-row">
-            <span
-              className="material-symbols-outlined text-primary cursor-pointer md:!hidden"
+            <button
+              type="button"
+              aria-label="Abrir menú"
+              className="header-menu-btn text-primary cursor-pointer md:!hidden"
               onClick={onMenuOpen}
             >
-              menu
-            </span>
+              <Icon name="menu" />
+            </button>
             <div className="brand-logo brand-logo--header">
               <Image
                 alt="Agustina Gonzalez Vicario"
@@ -84,7 +87,8 @@ export default function Header({ onMenuOpen, onConsultaOpen }: { onMenuOpen: () 
                 src="/logo-agv-header.svg"
                 width={156}
                 height={40}
-                priority
+                preload
+                fetchPriority="high"
               />
             </div>
           </div>

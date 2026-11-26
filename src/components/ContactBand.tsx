@@ -1,5 +1,7 @@
 "use client";
 
+import Icon from "@/components/Icon";
+
 interface ContactBandProps {
   onConsultaOpen: () => void;
 }
@@ -19,7 +21,7 @@ export default function ContactBand({ onConsultaOpen }: ContactBandProps) {
         </p>
         <button type="button" onClick={onConsultaOpen} className="contact-cta-btn">
           Agendar consulta
-          <span className="material-symbols-outlined ml-2" style={{ fontSize: 17 }}>arrow_forward</span>
+          <Icon name="arrow_forward" className="ml-2" style={{ fontSize: 17 }} />
         </button>
       </div>
     </section>

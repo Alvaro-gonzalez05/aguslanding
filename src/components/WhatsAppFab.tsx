@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Icon from "@/components/Icon";
 
 const WHATSAPP_URL = "https://wa.me/542616399640";
 
@@ -68,7 +69,7 @@ export default function WhatsAppFab({ onConsultaOpen }: WhatsAppFabProps) {
           }}
         >
           <span className="wa-fab__item-icon">
-            <span className="material-symbols-outlined" style={{ fontSize: 20 }}>edit_note</span>
+            <Icon name="edit_note" style={{ fontSize: 20 }} />
           </span>
           <span className="wa-fab__item-text">
             <span className="wa-fab__item-title">Consulta ordenada</span>

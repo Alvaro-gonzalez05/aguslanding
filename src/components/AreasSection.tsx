@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Icon, { type IconName } from "@/components/Icon";
 
 const areas = [
   { icon: "balance", title: "Derecho laboral - despidos", desc: "Asesoramiento y defensa en conflictos laborales, despidos sin causa, indemnizaciones, diferencias salariales, registración y resguardo integral de tus derechos como trabajador." },
@@ -24,7 +25,7 @@ export default function AreasSection() {
           {areas.map((area) => (
             <article key={area.title} className="area-card reveal-soft border border-outline-variant/30 p-6 flex flex-col" data-animate="area-card">
               <div className="area-icon">
-                <span className="material-symbols-outlined">{area.icon}</span>
+                <Icon name={area.icon as IconName} />
               </div>
               <h3 className="font-headline text-xl text-on-surface">{area.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-on-surface-variant flex-1">{area.desc}</p>
@@ -33,7 +34,7 @@ export default function AreasSection() {
                 className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold tracking-wide text-[var(--accent-deep)] hover:text-[var(--accent-strong)] transition-colors duration-200"
               >
                 Conocer más
-                <span className="material-symbols-outlined text-base" style={{ fontSize: '18px' }}>arrow_forward</span>
+                <Icon name="arrow_forward" className="text-base" style={{ fontSize: '18px' }} />
               </Link>
             </article>
           ))}

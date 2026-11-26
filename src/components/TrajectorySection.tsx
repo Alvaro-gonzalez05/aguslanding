@@ -1,5 +1,7 @@
 "use client";
 
+import Icon, { type IconName } from "@/components/Icon";
+
 const items = [
   {
     icon: "bolt",
@@ -47,7 +49,7 @@ export default function TrajectorySection() {
             {items.map((item) => (
               <div key={item.title} className="amparo-card">
                 <div className="amparo-card-icon">
-                  <span className="material-symbols-outlined" style={{ fontSize: 20 }}>{item.icon}</span>
+                  <Icon name={item.icon as IconName} style={{ fontSize: 20 }} />
                 </div>
                 <div>
                   <p className="amparo-card-title">{item.title}</p>

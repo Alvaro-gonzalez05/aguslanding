@@ -72,8 +72,26 @@ html {
   overflow-x: hidden;
 }
 
+/* Íconos SVG en línea (src/components/Icon.tsx). Mismo tamaño base que tenía la
+   fuente Material Symbols: el ícono mide 1em, así que font-size sigue controlando el tamaño. */
 .material-symbols-outlined {
-  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1em;
+  height: 1em;
+  font-size: 24px;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.header-menu-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
 }
 
 /* ── Header / Glass Nav ── */
@@ -439,6 +457,33 @@ html {
   backdrop-filter: blur(4px);
 }
 
+/* Entrada del hero en CSS: arranca con el primer pintado, sin esperar a que cargue el JS.
+   fill-mode "backwards" para que, al terminar, GSAP pueda seguir animando el slider. */
+@keyframes hero-in {
+  from { opacity: 0; transform: translateY(var(--hero-in-y, 24px)); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes hero-rule-in {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+.hero-enter {
+  animation: hero-in 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+}
+.hero-enter--1 { --hero-in-y: -10px; animation-duration: 0.6s; animation-delay: 0.05s; }
+.hero-enter--2 { --hero-in-y: 28px; animation-delay: 0.12s; }
+.hero-enter--3 { --hero-in-y: 18px; animation-delay: 0.3s; }
+.hero-enter--tag { --hero-in-y: 12px; animation-duration: 0.5s; animation-delay: 0.45s; }
+.hero-enter--tag:nth-child(2) { animation-delay: 0.55s; }
+.hero-enter--tag:nth-child(3) { animation-delay: 0.65s; }
+.hero-enter-rule {
+  animation: hero-rule-in 0.7s ease-out 0.25s backwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .hero-enter-rule { animation: none; }
+}
+
 /* ── Navigation ── */
 .top-nav-link {
   position: relative;
@@ -636,7 +681,7 @@ html {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: rgba(255, 255, 255, 0.35);
+  color: rgba(255, 255, 255, 0.62); /* contraste AA (5.7:1) sobre #2e3742 */
   margin-bottom: 1.1rem;
   font-family: var(--font-label);
 }
@@ -665,12 +710,12 @@ html {
 .amparo-chip {
   padding: 0.38rem 0.85rem;
   border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.13);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   font-size: 0.63rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.68); /* contraste AA (6.5:1) sobre #2e3742 */
   font-family: var(--font-label);
 }
 .amparo-cards-col {
