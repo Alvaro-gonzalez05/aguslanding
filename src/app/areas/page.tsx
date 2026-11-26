@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import Icon from "@/components/Icon";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import MobileDrawer from "@/components/MobileDrawer";
@@ -12,6 +14,7 @@ import { useAreasAnimations } from "@/hooks/useAreasAnimations";
 const areas = [
   {
     icon: "balance",
+    slug: "despidos-mendoza",
     title: "Derecho laboral - despidos",
     subtitle: "LABORAL",
     image: "/imagenes/laboral.jpeg",
@@ -23,6 +26,7 @@ const areas = [
   },
   {
     icon: "healing",
+    slug: "accidentes-de-trabajo-art-mendoza",
     title: "ART - accidentes laborales - enfermedades profesionales",
     subtitle: "ART",
     image: "/imagenes/hero-2.jpg",
@@ -34,6 +38,7 @@ const areas = [
   },
   {
     icon: "directions_car",
+    slug: "accidentes-de-transito-mendoza",
     title: "Daños y perjuicios - accidentes de tránsito",
     subtitle: "TRÁNSITO",
     image: "/imagenes/dañosyprejuicios.jpeg",
@@ -45,6 +50,7 @@ const areas = [
   },
   {
     icon: "health_and_safety",
+    slug: "amparos-de-salud-mendoza",
     title: "Derecho de salud - amparos",
     subtitle: "SALUD",
     image: "/imagenes/salud.jpeg",
@@ -56,6 +62,7 @@ const areas = [
   },
   {
     icon: "family_restroom",
+    slug: "sucesiones-mendoza",
     title: "Derecho sucesorio",
     subtitle: "SUCESIONES",
     image: "/imagenes/sucesorio.jpeg",
@@ -67,6 +74,7 @@ const areas = [
   },
   {
     icon: "diversity_1",
+    slug: "derecho-de-familia-mendoza",
     title: "Derecho de familia",
     subtitle: "FAMILIA",
     image: "/imagenes/familia.jpeg",
@@ -136,6 +144,10 @@ export default function AreasPage() {
                           </p>
                         ))}
                       </div>
+                      <Link href={`/areas/${area.slug}`} className="area-block__more">
+                        Ver casos, proceso y preguntas frecuentes
+                        <Icon name="arrow_forward" style={{ fontSize: 18 }} />
+                      </Link>
                     </div>
 
                     {/* Image side */}

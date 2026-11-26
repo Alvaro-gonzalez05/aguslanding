@@ -2,12 +2,12 @@ import Link from "next/link";
 import Icon, { type IconName } from "@/components/Icon";
 
 const areas = [
-  { icon: "balance", title: "Derecho laboral - despidos", desc: "Asesoramiento y defensa en conflictos laborales, despidos sin causa, indemnizaciones, diferencias salariales, registración y resguardo integral de tus derechos como trabajador." },
-  { icon: "healing", title: "ART - accidentes laborales - enfermedades profesionales", desc: "Reclamos ante ART por accidentes de trabajo, incapacidad, enfermedades profesionales, prestaciones médicas e indemnizaciones derivadas del daño sufrido." },
-  { icon: "directions_car", title: "Daños y perjuicios - accidentes de tránsito", desc: "Reclamos por lesiones, incapacidad, gastos y demás consecuencias derivadas de accidentes viales, con seguimiento integral hasta la reparación correspondiente." },
-  { icon: "health_and_safety", title: "Derecho de salud - amparos", desc: "Acciones urgentes para exigir cobertura médica, prestaciones, medicamentos y tratamientos cuando se vulnera tu derecho a la salud." },
-  { icon: "family_restroom", title: "Derecho sucesorio", desc: "Acompañamiento en sucesiones, declaratorias de herederos, administración de bienes y resolución ordenada del proceso sucesorio." },
-  { icon: "diversity_1", title: "Derecho de familia", desc: "Asistencia legal en conflictos familiares, divorcios, alimentos, régimen de comunicación, cuidado personal y protección de derechos del grupo familiar." },
+  { icon: "balance", slug: "despidos-mendoza", title: "Derecho laboral - despidos", desc: "Asesoramiento y defensa en conflictos laborales, despidos sin causa, indemnizaciones, diferencias salariales, registración y resguardo integral de tus derechos como trabajador." },
+  { icon: "healing", slug: "accidentes-de-trabajo-art-mendoza", title: "ART - accidentes laborales - enfermedades profesionales", desc: "Reclamos ante ART por accidentes de trabajo, incapacidad, enfermedades profesionales, prestaciones médicas e indemnizaciones derivadas del daño sufrido." },
+  { icon: "directions_car", slug: "accidentes-de-transito-mendoza", title: "Daños y perjuicios - accidentes de tránsito", desc: "Reclamos por lesiones, incapacidad, gastos y demás consecuencias derivadas de accidentes viales, con seguimiento integral hasta la reparación correspondiente." },
+  { icon: "health_and_safety", slug: "amparos-de-salud-mendoza", title: "Derecho de salud - amparos", desc: "Acciones urgentes para exigir cobertura médica, prestaciones, medicamentos y tratamientos cuando se vulnera tu derecho a la salud." },
+  { icon: "family_restroom", slug: "sucesiones-mendoza", title: "Derecho sucesorio", desc: "Acompañamiento en sucesiones, declaratorias de herederos, administración de bienes y resolución ordenada del proceso sucesorio." },
+  { icon: "diversity_1", slug: "derecho-de-familia-mendoza", title: "Derecho de familia", desc: "Asistencia legal en conflictos familiares, divorcios, alimentos, régimen de comunicación, cuidado personal y protección de derechos del grupo familiar." },
 ];
 
 export default function AreasSection() {
@@ -30,7 +30,8 @@ export default function AreasSection() {
               <h3 className="font-headline text-xl text-on-surface">{area.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-on-surface-variant flex-1">{area.desc}</p>
               <Link
-                href="/areas"
+                href={`/areas/${area.slug}`}
+                aria-label={`Conocer más sobre ${area.title}`}
                 className="inline-flex items-center gap-1.5 mt-4 text-sm font-semibold tracking-wide text-[var(--accent-deep)] hover:text-[var(--accent-strong)] transition-colors duration-200"
               >
                 Conocer más

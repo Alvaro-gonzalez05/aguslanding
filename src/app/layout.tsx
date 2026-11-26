@@ -83,6 +83,7 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Attorney",
+      "@id": `${siteUrl}/#abogada`,
       name: "Agustina Gonzalez Vicario",
       alternateName: ["Estudio AGV", "Estudio Jurídico AGV"],
       url: siteUrl,
@@ -137,17 +138,6 @@ const jsonLd = {
       description:
         "Estudio jurídico en Mendoza especializado en derecho laboral, amparos de salud, sucesiones y reclamos por daños.",
       inLanguage: "es-AR",
-    },
-    {
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
-          name: "Inicio",
-          item: siteUrl,
-        },
-      ],
     },
   ],
 };
